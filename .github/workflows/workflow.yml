@@ -23,7 +23,10 @@ jobs:
         dotnet publish -c Release -o ./publish
         mkdir -p dist
         mv ./publish/* dist/
-    
+        
+    - name: Listar conteúdo do diretório de publicação
+      run: ls ./dist
+      
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
