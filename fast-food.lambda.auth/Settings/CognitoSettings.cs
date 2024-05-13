@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Helpers;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +21,12 @@ namespace Settings
 
         public CognitoSettings()
         {
-            //UserPoolId = "";
-            //ClientId = "";
-            //ClientSecret = "";
-            //AwsAccessKey = "";
-            //AwsSecretAccessKey = "";
-            //AwsSessionToken = "";
-        }
+            UserPoolId = EnvironmentHelper.GetRequiredEnvironmentVariable("USER_POOL_ID");
+            ClientId = EnvironmentHelper.GetRequiredEnvironmentVariable("CLIENT_ID");
+            ClientSecret = EnvironmentHelper.GetRequiredEnvironmentVariable("CLIENT_SECRET");
+            AwsAccessKey = EnvironmentHelper.GetRequiredEnvironmentVariable("AWS_ACCESS_KEY_ID");
+            AwsSecretAccessKey = EnvironmentHelper.GetRequiredEnvironmentVariable("AWS_SECRET_ACCESS_KEY");
+            AwsSessionToken = EnvironmentHelper.GetRequiredEnvironmentVariable("AWS_SESSION_TOKEN");
+        }     
     }
 }
