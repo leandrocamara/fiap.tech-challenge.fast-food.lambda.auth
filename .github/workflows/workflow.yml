@@ -40,4 +40,9 @@ jobs:
 
     - name: Deploy to AWS Lambda
       run: |
-        aws lambda create-function --function-name fast-food-lambda-auth --zip-file fileb://./dist/fast-food.lambda.auth.zip
+         aws lambda create-function \
+          --function-name fast-food-lambda-auth \
+          --runtime dotnetcore8.0 \
+          --role LabRole \
+          --handler fast-food.lambda.auth::fast_food.lambda.auth.Function::FunctionHandler \
+          --zip-file fileb://./dist/fast-food.lambda.auth.zip
