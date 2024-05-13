@@ -43,6 +43,6 @@ jobs:
          aws lambda create-function \
           --function-name fast-food-lambda-auth \
           --runtime dotnetcore8.0 \
-          --role LabRole \
+          --role labRole \
           --handler fast-food.lambda.auth::fast_food.lambda.auth.Function::FunctionHandler \
           --zip-file fileb://./dist/fast-food.lambda.auth.zip
