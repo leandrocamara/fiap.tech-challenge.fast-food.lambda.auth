@@ -40,8 +40,8 @@ jobs:
 
     - name: Deploy to AWS Lambda
       run: |
-        ENV_VARS=$(jq -n --arg user_pool_id "${{ var.AWS_USER_POOL_ID }}" \
-                             --arg client_id "${{ var.AWS_CLIENT_ID }}" \
+        ENV_VARS=$(jq -n --arg user_pool_id "${{ vars.AWS_USER_POOL_ID }}" \
+                             --arg client_id "${{ vars.AWS_CLIENT_ID }}" \
                              --arg client_secret "${{ secrets.AWS_CLIENT_SECRET }}" \
                              --arg aws_access_key_id "${{ secrets.AWS_ACCESS_KEY_ID }}" \
                              --arg aws_secret_access_key "${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
