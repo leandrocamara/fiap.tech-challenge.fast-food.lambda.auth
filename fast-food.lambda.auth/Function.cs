@@ -21,11 +21,24 @@ public class Function
         _cognitoService = new CognitoService();
     }
 
-    public async Task<APIGatewayProxyResponse> FunctionHandler(string cpf, ILambdaContext context)
+    public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
     {
+        // Verifica se os dados estão presentes na solicitação
+        if (!request.QueryStringParameters.ContainsKey("cpf"))
+        {
+            return new APIGatewayProxyResponse
+            {
+                StatusCode = 400,
+                Body = "CPF não fornecido"
+            };
+        }
+
+
+        var cpfValue = request.QueryStringParameters["cpf"];
+
         //verifica se o CPF é válido
 
-        bool cpfIsValid = CPFHelper.IsValid(cpf);
+        bool cpfIsValid = CPFHelper.IsValid(cpfValue);
         if(!cpfIsValid) 
         {
             return new APIGatewayProxyResponse
@@ -36,14 +49,14 @@ public class Function
         }
 
         // Verifica se o CPF já existe na base de dados
-        bool cpfExists = await _cognitoService.UserExists(cpf);
+        bool cpfExists = await _cognitoService.UserExists(cpfValue);
         
         // Cadastra o usuário no Amazon Cognito
         if (!cpfExists)        
-            await _cognitoService.RegisterUser(cpf);        
+            await _cognitoService.RegisterUser(cpfValue);        
        
         //autentica o Usuário    
-        string token = await _cognitoService.AuthAsync(cpf);
+        string token = await _cognitoService.AuthAsync(cpfValue);
         return new APIGatewayProxyResponse
         {
             StatusCode = 200,
