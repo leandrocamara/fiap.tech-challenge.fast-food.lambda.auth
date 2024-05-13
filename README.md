@@ -1,12 +1,12 @@
 # fiap.tech-challenge.fast-food.infra.cognito
 
-Este repositÛrio È respons·vel por manter AWS Lambda de autenticaÁ„o da aplicaÁ„o [**_Fast Food API_**](https://github.com/leandrocamara/fiap.tech-challenge.fast-food.api).
+Este reposit√≥rio √© respons√°vel por manter AWS Lambda de autentica√ß√£o da aplica√ß√£o [**_Fast Food API_**](https://github.com/leandrocamara/fiap.tech-challenge.fast-food.api).
 
-## ExecuÁ„o
+## Execu√ß√£o
 
-ApÛs a execuÁ„o dos [_Workflows_](https://github.com/leandrocamara/fiap.tech-challenge.fast-food.lambda.auth/actions) (GitHub Actions), uma AWS Lambda [**_Lambda_**](https://docs.aws.amazon.com/lambda/) È provisionada na _AWS_.
+Ap√≥s a execu√ß√£o dos [_Workflows_](https://github.com/leandrocamara/fiap.tech-challenge.fast-food.lambda.auth/actions) (GitHub Actions), uma AWS Lambda [**_Lambda_**](https://docs.aws.amazon.com/lambda/) √© provisionada na _AWS_.
 
-H· duas maneiras de executar e criar a lambda:
+H√° duas maneiras de executar e criar a lambda: 
 
 1. Realizando um `push` na `main`, por meio de um `Merge Pull Request`;
 
@@ -14,15 +14,15 @@ H· duas maneiras de executar e criar a lambda:
 
     ![Manual Deployment](./docs/manual-deployment.png)
 
-    2.1. Por padr„o, o _Workflow_ utilizar· as `Secrets` configuradas no projeto. Caso esteja utilizando o `AWS Academy`, recomenda-se informar as credencias da conta. **Obs.:** Cada sess„o do _AWS Academy_ dura **4 horas**.
+    2.1. Por padr√£o, o _Workflow_ utilizar√° as `Secrets` configuradas no projeto. Caso esteja utilizando o `AWS Academy`, recomenda-se informar as credencias da conta. **Obs.:** Cada sess√£o do _AWS Academy_ dura **4 horas**.
 
 
 
 ## Tech Challenge
-Projeto para a curso de [PÛs GraduaÁ„o FIAP - Software Architecture](https://postech.fiap.com.br/curso/software-architecture/).
+Projeto para a curso de [P√≥s Gradua√ß√£o FIAP - Software Architecture](https://postech.fiap.com.br/curso/software-architecture/).
 
-O grupo (19) È composto por:
+O grupo (19) √© composto por:
 - [Danilo Queiroz da Silva](https://github.com/DaniloQueirozSilva)
 - [Elton Douglas Souza](https://github.com/eltonds88)
-- [Leandro da Silva C‚mara](https://github.com/leandrocamara)
+- [Leandro da Silva C√¢mara](https://github.com/leandrocamara)
 - [Marcelo Patricio da Silva](https://github.com/mpatricio007)
