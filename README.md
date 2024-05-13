@@ -6,7 +6,7 @@ Este repositório é responsável por manter AWS Lambda de autenticação da apl
 
 Após a execução dos [_Workflows_](https://github.com/leandrocamara/fiap.tech-challenge.fast-food.lambda.auth/actions) (GitHub Actions), uma AWS Lambda [**_Lambda_**](https://docs.aws.amazon.com/lambda/) é provisionada na _AWS_.
 
-Há duas maneiras de executar e criar a lambda: 
+Há duas maneiras de executar e criar a lambda:  
 
 1. Realizando um `push` na `main`, por meio de um `Merge Pull Request`;
 
