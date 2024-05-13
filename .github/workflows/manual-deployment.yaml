@@ -1,0 +1,63 @@
+name: Manual Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      awsAccessKey:
+        description: 'AWS Academy - AWS_ACCESS_KEY_ID'
+        required: false
+        type: string
+      awsSecretAccessKey:
+        description: 'AWS Academy - AWS_SECRET_ACCESS_KEY'
+        required: false
+        type: string
+      awsSessionToken:
+        description: 'AWS Academy - AWS_SESSION_TOKEN'
+        required: false
+        type: string
+      awsRoleArn:
+        description: 'AWS Academy - AWS_ROLE_ARN'
+        required: false
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: Setup .NET 8 SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.x
+
+    - name: Build and Publish
+      run: |
+        dotnet publish -c Release -o ./publish
+        mkdir -p dist
+        mv ./publish/* dist/
+        
+    - name: Criar arquivo ZIP
+      run: zip -r dist/fast-food.lambda.auth.zip dist/*    
+      
+    - name: Listar conteúdo do diretório de publicação
+      run: ls ./dist
+      
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ github.event.inputs.awsAccessKey || secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ github.event.inputs.awsSecretAccessKey || secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-session-token: ${{ github.event.inputs.awsSessionToken || secrets.AWS_SESSION_TOKEN }}
+        aws-region: ${{ vars.AWS_REGION }}
+
+    - name: Deploy to AWS Lambda
+      run: |
+         aws lambda create-function \
+          --function-name fast-food-lambda-auth \
+          --runtime dotnet8 \
+          --role  ${{ github.event.inputs.awsRoleArn || vars.AWS_ROLE_ARN }} \
+          --handler fast-food.lambda.auth::fast_food.lambda.auth.Function::FunctionHandler \
+          --zip-file fileb://./dist/fast-food.lambda.auth.zip
