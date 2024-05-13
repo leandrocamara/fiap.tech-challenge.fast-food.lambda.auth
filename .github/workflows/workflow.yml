@@ -24,6 +24,9 @@ jobs:
         mkdir -p dist
         mv ./publish/* dist/
         
+    - name: Criar arquivo ZIP
+      run: zip -r dist/fast-food.lambda.auth.zip dist/*    
+      
     - name: Listar conteúdo do diretório de publicação
       run: ls ./dist
       
