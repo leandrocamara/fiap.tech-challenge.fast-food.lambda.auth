@@ -24,9 +24,9 @@ namespace Settings
             UserPoolId = EnvironmentHelper.GetRequiredEnvironmentVariable("USER_POOL_ID");
             ClientId = EnvironmentHelper.GetRequiredEnvironmentVariable("CLIENT_ID");
             ClientSecret = EnvironmentHelper.GetRequiredEnvironmentVariable("CLIENT_SECRET");
-            AwsAccessKey = EnvironmentHelper.GetRequiredEnvironmentVariable("AWS_ACCESS_KEY_ID");
-            AwsSecretAccessKey = EnvironmentHelper.GetRequiredEnvironmentVariable("AWS_SECRET_ACCESS_KEY");
-            AwsSessionToken = EnvironmentHelper.GetRequiredEnvironmentVariable("AWS_SESSION_TOKEN");
+            AwsAccessKey = EnvironmentHelper.GetRequiredEnvironmentVariable("ACCESS_KEY_ID");
+            AwsSecretAccessKey = EnvironmentHelper.GetRequiredEnvironmentVariable("SECRET_ACCESS_KEY");
+            AwsSessionToken = EnvironmentHelper.GetRequiredEnvironmentVariable("SESSION_TOKEN");
         }     
     }
 }
