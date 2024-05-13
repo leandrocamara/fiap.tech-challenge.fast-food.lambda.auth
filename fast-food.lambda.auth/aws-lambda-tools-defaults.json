@@ -21,7 +21,7 @@
     "function-subnets"      : "",
     "function-security-groups" : "",
     "tracing-mode"             : "PassThrough",
-    "environment-variables"    : "",
+    "environment-variables"    : "\"CLIENT_SECRET\"=\"ofdhhcuv368fk9t0ibl707d456u4c49ag7lvkir9ohepsjvca9m\";\"SECRET_ACCESS_KEY\"=\"MyZn/3EkeYMOrb2nbsiaZ2M+mtXAYqajw7LwtJhN\";\"CLIENT_ID\"=\"1miu32830t5fad1ap2lopm84du\";\"ACCESS_KEY_ID\"=\"ASIAZYBYZGYBM7UJH3M4\";\"SESSION_TOKEN\"=\"IQoJb3JpZ2luX2VjEA4aCXVzLXdlc3QtMiJIMEYCIQC5OYcc4LQZKIJvpdHERYwaE2INkf/BZElCjobTRXQEjQIhAMfbGOgV+jE8l7UY/VK6jBZw/pP5cXTOvfuFobyEa9RVKrACCHcQARoMNjcwMTMzOTkwOTE0IgxdlK71T76n/rnsP54qjQItF8M/httrDfJPzgBOhZgcNFlaDYkdKbm+lIagiuU8C40/basSfWBLp002w/VPqvjyr8kLZrJJHxPtERC7bS1qvslSPFC0ZH3xE9wwTs1l43SNNPLbll9ROopuiuONFpu25/ghbNPxw6msZ+79JOxBHIYeqk5AvGqqM6MVgx2K4MyPI/vrKbr012SuBVehpsctg8mw3pxBAw5aju8xBEqSUxSKcbLolYxd6+V/LooVoVWpcu4crKDr7857hlcnwg1450jcvOKodD6mW3EsPYJEVAwe46/HK8/rOHhWz07fs298W1Ama+hNta4uCpseuB0tdCbjuUOv0n42Scu8RsoG5IYRP1U3ww2NGOmrTDCWwYiyBjqcAfXj+6OvwYPmL2mCIHpvEDXk1RosnFMwyF8IX7uCAqK5wEWIoC72p5LACztf8R0pglTIyEIW+IKs/v+TBDxjvAXI9yiBvP2OxalGRdQ1+I1jjCCMKifw5graCmPHTS4LHvZf348Lau5b697HU3vW8adb4JdgR1gQpCOwUM61RdTsVRoGOaNLf3MgLwhxl9SjhRaeJkoX0F7K0nWC7Q==\";\"USER_POOL_ID\"=\"us-east-1_zSmRFvjlk\"",
     "image-tag"                : "",
     "function-description"     : ""
 }

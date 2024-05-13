@@ -21,13 +21,11 @@ public class Function
         _cognitoService = new CognitoService();
     }
 
-    public async Task<APIGatewayProxyResponse> FunctionHandler(APIGatewayProxyRequest request, ILambdaContext context)
+    public async Task<APIGatewayProxyResponse> FunctionHandler(string cpf, ILambdaContext context)
     {
-        var cpfValue = request.QueryStringParameters["cpf"];
-
         //verifica se o CPF é válido
 
-        bool cpfIsValid = CPFHelper.IsValid(cpfValue);
+        bool cpfIsValid = CPFHelper.IsValid(cpf);
         if(!cpfIsValid) 
         {
             return new APIGatewayProxyResponse
@@ -38,14 +36,14 @@ public class Function
         }
 
         // Verifica se o CPF já existe na base de dados
-        bool cpfExists = await _cognitoService.UserExists(cpfValue);
+        bool cpfExists = await _cognitoService.UserExists(cpf);
         
         // Cadastra o usuário no Amazon Cognito
         if (!cpfExists)        
-            await _cognitoService.RegisterUser(cpfValue);        
+            await _cognitoService.RegisterUser(cpf);        
        
         //autentica o Usuário    
-        string token = await _cognitoService.AuthAsync(cpfValue);
+        string token = await _cognitoService.AuthAsync(cpf);
         return new APIGatewayProxyResponse
         {
             StatusCode = 200,
