@@ -1,9 +1,24 @@
-name: CI/CD Pipeline 
+name: Manual Deployment
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      awsAccessKey:
+        description: 'AWS Academy - AWS_ACCESS_KEY_ID'
+        required: false
+        type: string
+      awsSecretAccessKey:
+        description: 'AWS Academy - AWS_SECRET_ACCESS_KEY'
+        required: false
+        type: string
+      awsSessionToken:
+        description: 'AWS Academy - AWS_SESSION_TOKEN'
+        required: false
+        type: string
+      awsRoleArn:
+        description: 'AWS Academy - AWS_ROLE_ARN'
+        required: false
+        type: string
 
 jobs:
   build:
@@ -33,9 +48,9 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+        aws-access-key-id: ${{ github.event.inputs.awsAccessKey || secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ github.event.inputs.awsSecretAccessKey || secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-session-token: ${{ github.event.inputs.awsSessionToken || secrets.AWS_SESSION_TOKEN }}
         aws-region: ${{ vars.AWS_REGION }}
 
     - name: Deploy to AWS Lambda
@@ -43,6 +58,6 @@ jobs:
          aws lambda create-function \
           --function-name fast-food-lambda-auth \
           --runtime dotnet8 \
-          --role  ${{ vars.AWS_ROLE_ARN }} \
+          --role  ${{ github.event.inputs.awsRoleArn || vars.AWS_ROLE_ARN }} \
           --handler fast-food.lambda.auth::fast_food.lambda.auth.Function::FunctionHandler \
           --zip-file fileb://./dist/fast-food.lambda.auth.zip
