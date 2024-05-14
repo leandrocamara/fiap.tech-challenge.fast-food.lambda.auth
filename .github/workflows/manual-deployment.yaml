@@ -83,4 +83,4 @@ jobs:
           --role  ${{ github.event.inputs.awsRoleArn || vars.AWS_ROLE_ARN }} \
           --handler fast-food.lambda.auth::fast_food.lambda.auth.Function::FunctionHandler \
           --zip-file fileb://./dist/fast-food.lambda.auth.zip
-          --environment "$ENV_VARS"
+          --environment Variables="$ENV_VARS"
