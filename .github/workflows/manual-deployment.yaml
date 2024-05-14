@@ -19,6 +19,21 @@ on:
         description: 'AWS Academy - AWS_ROLE_ARN'
         required: false
         type: string
+      awsUserPoolId:
+        description: 'AWS Academy - AWS_USER_POOL_ID'
+        required: false
+        type: string
+      awsClientId:
+        description: 'AWS Academy - AWS_CLIENT_ID'
+        required: false
+        type: string
+      awsClientSecret:
+        description: 'AWS Academy - AWS_CLIENT_SECRET'
+        required: false
+        type: string
+
+
+
 
 jobs:
   build:
